@@ -15,14 +15,12 @@ def change_contacts(username, new_phone, contacts):
     else:
         return f"Error: {username} does not exist in the contacts." 
 
-def phone_user(name, contacts):
-    for name in names:
-        if name in contacts:
-            phones = contacts[name]
-            for phone in phones:
-                print(f"{name}: {phone}")
-        else:
-            print("No user in contacts")
+def phone_user(args, contacts):
+    name = args[0]
+    if name in contacts:
+        return f'{name}: {contacts[name]}'
+    else:
+        return "No user in contacts"
 
 def show_all_contacts(contacts):
     if not contacts:
@@ -53,8 +51,8 @@ def main():
             print(change_contacts(name, new_phone, contacts)) #3 Завдання
          
         elif command == "phone": 
-            names = args
-            print(phone_user(names, contacts))   #4
+            # names = args
+            print(phone_user(args, contacts))   #4
                 
         elif command == "all":
             print(show_all_contacts(contacts), "\t")    #5
